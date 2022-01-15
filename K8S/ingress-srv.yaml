@@ -14,6 +14,6 @@ spec:
         path: "/graphql"
         backend:
           service:
-            name: twittorgraphql-clusterip-srv
+            name: twittor-graphql-clusterip-srv
             port: 
               number: 80
