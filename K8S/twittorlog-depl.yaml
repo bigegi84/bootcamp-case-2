@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: twittorlog-dpl
+  name: twittor-log-dpl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: twittorlog
+      app: twittor-log
   template:
     metadata:
       labels:
-        app: twittorlog
+        app: twittor-log
     spec:
       containers:
-      - name: twittorlog
-        image: bigegi84/twittorlog:latest
+      - name: twittor-log
+        image: bigegi84/twittor-log:latest
         resources:
           limits:
             memory: "128Mi"
@@ -25,13 +25,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: twittorlog-clusterip-srv
+  name: twittor-log-clusterip-srv
 spec:
   type: ClusterIP
   selector:
-    app: twittorlog
+    app: twittor-log
   ports:
-  - name: twittorlog
+  - name: twittor-log
     protocol: TCP
     port: 80
     targetPort: 80

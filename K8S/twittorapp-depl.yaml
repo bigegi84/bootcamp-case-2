@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: twittorapp-dpl
+  name: twittor-app-dpl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: twittorapp
+      app: twittor-app
   template:
     metadata:
       labels:
-        app: twittorapp
+        app: twittor-app
     spec:
       containers:
-      - name: twittorapp
-        image: bigegi84/twittorapp:latest
+      - name: twittor-app
+        image: bigegi84/twittor-app:latest
         resources:
           limits:
             memory: "128Mi"
@@ -25,13 +25,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: twittorapp-clusterip-srv
+  name: twittor-app-clusterip-srv
 spec:
   type: ClusterIP
   selector:
-    app: twittorapp
+    app: twittor-app
   ports:
-  - name: twittorapp
+  - name: twittor-app
     protocol: TCP
     port: 80
     targetPort: 80
