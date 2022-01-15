@@ -34,7 +34,7 @@ namespace Twittor.Migrations
                         .HasMaxLength(280)
                         .HasColumnType("nvarchar(280)");
 
-                    b.Property<int?>("TwittorModelId")
+                    b.Property<int?>("TwittorId")
                         .HasColumnType("int");
 
                     b.Property<int?>("UserId")
@@ -42,7 +42,7 @@ namespace Twittor.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TwittorModelId");
+                    b.HasIndex("TwittorId");
 
                     b.HasIndex("UserId");
 
@@ -66,7 +66,7 @@ namespace Twittor.Migrations
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("Twittor.Models.TwittorModel", b =>
+            modelBuilder.Entity("Twittor.Models.Twittor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -88,7 +88,7 @@ namespace Twittor.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("TwittorModels");
+                    b.ToTable("Twittors");
                 });
 
             modelBuilder.Entity("Twittor.Models.User", b =>
@@ -160,23 +160,23 @@ namespace Twittor.Migrations
 
             modelBuilder.Entity("Twittor.Models.Comment", b =>
                 {
-                    b.HasOne("Twittor.Models.TwittorModel", "TwittorModel")
+                    b.HasOne("Twittor.Models.Twittor", "Twittor")
                         .WithMany("Comments")
-                        .HasForeignKey("TwittorModelId");
+                        .HasForeignKey("TwittorId");
 
                     b.HasOne("Twittor.Models.User", "User")
                         .WithMany("Comments")
                         .HasForeignKey("UserId");
 
-                    b.Navigation("TwittorModel");
+                    b.Navigation("Twittor");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Twittor.Models.TwittorModel", b =>
+            modelBuilder.Entity("Twittor.Models.Twittor", b =>
                 {
                     b.HasOne("Twittor.Models.User", "User")
-                        .WithMany("TwittorModels")
+                        .WithMany("Twittors")
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
@@ -206,7 +206,7 @@ namespace Twittor.Migrations
                     b.Navigation("UserRoles");
                 });
 
-            modelBuilder.Entity("Twittor.Models.TwittorModel", b =>
+            modelBuilder.Entity("Twittor.Models.Twittor", b =>
                 {
                     b.Navigation("Comments");
                 });
@@ -215,7 +215,7 @@ namespace Twittor.Migrations
                 {
                     b.Navigation("Comments");
 
-                    b.Navigation("TwittorModels");
+                    b.Navigation("Twittors");
 
                     b.Navigation("UserRoles");
                 });

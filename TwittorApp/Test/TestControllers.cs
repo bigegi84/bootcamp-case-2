@@ -40,7 +40,7 @@ namespace TwittorDAL.Test
       //   {
       //     UserID = 2,
       //     Description = "this is the comment👹👹👹",
-      //     TwittorModelID = 2,
+      //     TwittorID = 2,
       //   };
 
       //   CommentsController commentsController = new CommentsController(_iconfiguration);

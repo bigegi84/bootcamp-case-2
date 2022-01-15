@@ -25,12 +25,12 @@ namespace TwittorDAL.Data
         {
           var result = context.Users.Where(u => u.Id == input.UserID && u.Lock == false).SingleOrDefault();
           if (result == null) return false;
-          var result2 = context.TwittorModels.Where(t => t.Id == input.TwittorModelID).SingleOrDefault();
+          var result2 = context.Twittors.Where(t => t.Id == input.TwittorID).SingleOrDefault();
           if (result2 == null) return false;
           var comment = new Comment
           {
             User = result,
-            TwittorModel = result2,
+            Twittor = result2,
             Description = input.Description,
             CreatedAt = DateTime.Now,
 

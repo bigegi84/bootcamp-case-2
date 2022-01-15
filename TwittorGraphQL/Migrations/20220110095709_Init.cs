@@ -40,7 +40,7 @@ namespace Twittor.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TwittorModels",
+                name: "Twittors",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -51,9 +51,9 @@ namespace Twittor.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TwittorModels", x => x.Id);
+                    table.PrimaryKey("PK_Twittors", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TwittorModels_Users_UserId",
+                        name: "FK_Twittors_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -94,16 +94,16 @@ namespace Twittor.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(type: "nvarchar(280)", maxLength: 280, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TwittorModelId = table.Column<int>(type: "int", nullable: true),
+                    TwittorId = table.Column<int>(type: "int", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comments_TwittorModels_TwittorModelId",
-                        column: x => x.TwittorModelId,
-                        principalTable: "TwittorModels",
+                        name: "FK_Comments_Twittors_TwittorId",
+                        column: x => x.TwittorId,
+                        principalTable: "Twittors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -115,9 +115,9 @@ namespace Twittor.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_TwittorModelId",
+                name: "IX_Comments_TwittorId",
                 table: "Comments",
-                column: "TwittorModelId");
+                column: "TwittorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_UserId",
@@ -125,8 +125,8 @@ namespace Twittor.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TwittorModels_UserId",
-                table: "TwittorModels",
+                name: "IX_Twittors_UserId",
+                table: "Twittors",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -155,7 +155,7 @@ namespace Twittor.Migrations
                 name: "UserRoles");
 
             migrationBuilder.DropTable(
-                name: "TwittorModels");
+                name: "Twittors");
 
             migrationBuilder.DropTable(
                 name: "Roles");

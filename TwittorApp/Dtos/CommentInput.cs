@@ -5,6 +5,6 @@ namespace TwittorDAL.Dtos
     public string Description { get; set; }
 
     public int UserID { get; set; }
-    public int TwittorModelID { get; set; }
+    public int TwittorID { get; set; }
   }
 }

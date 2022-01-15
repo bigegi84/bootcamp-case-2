@@ -10,6 +10,6 @@ namespace Twittor.Dtos
     [Required]
     public int UserID { get; set; }
     [Required]
-    public int TwittorModelID { get; set; }
+    public int TwittorID { get; set; }
   }
 }

@@ -26,14 +26,14 @@ namespace TwittorDAL.Data
         {
           var result = context.Users.Where(u => u.Id == input.UserID && u.Lock == false).SingleOrDefault();
           if (result == null) return false;
-          var twot = new TwittorModel
+          var twot = new Twittor
           {
             User = result,
             Description = input.Description,
             CreatedAt = DateTime.Now,
 
           };
-          await context.TwittorModels.AddAsync(twot);
+          await context.Twittors.AddAsync(twot);
           await context.SaveChangesAsync();
           return true;
         }
@@ -51,10 +51,10 @@ namespace TwittorDAL.Data
       {
         using (var context = new AppDbContext(_connString))
         {
-          var result = context.TwittorModels.Where(t => t.Id == TwotID).Include(c => c.Comments).First();
+          var result = context.Twittors.Where(t => t.Id == TwotID).Include(c => c.Comments).First();
           if (result == null) return false;
           result.Comments.Clear();
-          context.TwittorModels.Remove(result);
+          context.Twittors.Remove(result);
           await context.SaveChangesAsync();
           return true;
         }

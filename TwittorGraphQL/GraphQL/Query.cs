@@ -22,7 +22,7 @@ namespace Twittor.GraphQL
     {
       var result = await Producerhandler.ProduceMessage(TopicList.LoggingTopic, _config, TopicKeyList.GetTwot, "Get twots happened");
 
-      return (context.TwittorModels.Select(p => new TwotOutput()
+      return (context.Twittors.Select(p => new TwotOutput()
       {
         Id = p.Id,
         Description = p.Description,

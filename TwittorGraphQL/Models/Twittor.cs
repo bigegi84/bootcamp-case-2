@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace TwittorDAL.Models
+namespace Twittor.Models
 {
-  public class TwittorModel
+  public class Twittor
   {
     [Key]
     public int Id { get; set; }
